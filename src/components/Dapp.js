@@ -69,7 +69,7 @@ export class Dapp extends React.Component {
 
     if (this.state.accountError ||
       this.state.accounts === undefined ||
-      ((this.state.selectedAddress !== this.state.accounts.dealblock.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.lender.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.borrower.toLowerCase()))) {
+      ((this.state.selectedAddress !== this.state.accounts.controller.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.lender.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.borrower.toLowerCase()))) {
       return (
         <ConnectWallet
           connectWallet={() => this._connectWallet()}
@@ -83,7 +83,7 @@ export class Dapp extends React.Component {
       return <Loading />;
     }
     console.log(this.state)
-    if (this.state.selectedName === "dealblock") {
+    if (this.state.selectedName === "controller") {
       return (
         <div className="">
           <div className="row">
@@ -93,7 +93,7 @@ export class Dapp extends React.Component {
 
           <div className="container">
 
-          <h2>Dealblock's Account</h2>
+          <h2>Controller's Account</h2>
 
             <div className="row">
               <div className="col-6 p-3 card">
@@ -327,9 +327,9 @@ export class Dapp extends React.Component {
 
   async _updateAccount() {
 
-    if (this.state.selectedAddress !== this.state.accounts.dealblock.toLowerCase()) {
+    if (this.state.selectedAddress !== this.state.accounts.controller.toLowerCase()) {
       let balance = await this._token.balanceOf(this.state.selectedAddress);
-      let allowance = await this._token.allowance(this.state.selectedAddress, this.state.accounts.dealblock);
+      let allowance = await this._token.allowance(this.state.selectedAddress, this.state.accounts.controller);
 
       await this.setState({ balance, allowance });
 
@@ -340,12 +340,12 @@ export class Dapp extends React.Component {
       await this.setState({ balance });
 
       let p1balance = await this._token.balanceOf(this.state.accounts.lender);
-      let p1allowance = await this._token.allowance(this.state.accounts.lender, this.state.accounts.dealblock);
+      let p1allowance = await this._token.allowance(this.state.accounts.lender, this.state.accounts.controller);
 
       await this.setState({ p1balance, p1allowance });
 
       let p2balance = await this._token.balanceOf(this.state.accounts.borrower);
-      let p2allowance = await this._token.allowance(this.state.accounts.borrower, this.state.accounts.dealblock);
+      let p2allowance = await this._token.allowance(this.state.accounts.borrower, this.state.accounts.controller);
 
       await this.setState({ p2balance, p2allowance });
     }
@@ -421,7 +421,7 @@ export class Dapp extends React.Component {
 
       this._dismissTransactionError();
 
-      const tx2 = await this._token.approve(this.state.accounts.dealblock, amount);
+      const tx2 = await this._token.approve(this.state.accounts.controller, amount);
       this.setState({ txBeingSent: tx2.hash });
 
       const receipt = await tx2.wait();
@@ -484,7 +484,7 @@ export class Dapp extends React.Component {
   _checkAccounts() {
 
     if (this.state.accounts === undefined ||
-      ((this.state.selectedAddress !== this.state.accounts.dealblock.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.lender.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.borrower.toLowerCase()))) {
+      ((this.state.selectedAddress !== this.state.accounts.controller.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.lender.toLowerCase()) && (this.state.selectedAddress !== this.state.accounts.borrower.toLowerCase()))) {
       this.setState({
         accountError: 'Please use one of the first accounts provided by the mnemonic in .env '
       });
