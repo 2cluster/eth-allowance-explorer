@@ -1,5 +1,5 @@
 {
-	"contract": "0x5dF43ee3333cA8f117F4329De23502Df60362F16",
-	"network": "rinkeby",
-	"networkId": "4"
+	"contract": "0xBF7c32a4dC66EFc4B352C398e780c9184eB299E2",
+	"network": "hardhat",
+	"networkId": "31337"
 }
