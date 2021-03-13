@@ -5,9 +5,9 @@ import { ethers } from "ethers";
 
 // We import the contract's artifacts and address here, as we are going to be
 // using them with ethers
-import ABI from "../contract/abi.json";
-import ADR from "../contract/adr.json";
-import ACC from "../contract/acc.json";
+import ABI from "../connection/abi.json";
+import ADR from "../connection/adr.json";
+import ACC from "../connection/acc.json";
 
 // All the logic of this dapp is contained in the Dapp component.
 // These other components are just presentational ones: they don't have any
